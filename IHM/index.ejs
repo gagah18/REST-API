@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Accueil</title>
+    <style>
+        tr th,td{
+            text-align: center;
+        }
+        table,th{
+            border: solid 1px;
+        }
+        body{
+            margin: 100px;
+        }
+        .red{
+            color: red;
+        }
+        .green{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid m-5">
+        
+        
+        <div class="container">
+            <div class=" row">
+                <div class="col-12 col-md-3">
+                    <form action="/joueurs" method="post">
+                        <input type="hidden" name="id" id="id">
+                        <label for="nom">Nom</label>  <br>
+                        <input type="text" id="nom" required name="nom"> <br>
+                        <label for="Wins">Wins</label> <br>
+                        <input type="number" id="wins" required name="wins"> <br>
+                        <label for="losses">Losses</label> <br>
+                        <input type="number" id="losses" required name="losses"> <br>
+                        <label for="score">Scores</label> <br>
+                        <input type="number" id="scores" required name="scores"> <br>
+                        
+                        <input type="submit" value="Enregistrer" onclick="">
+                    </form>
+                </div>
+                <div class="col-12 offset-md-1 col-md-8">
+                    <h2>Liste des Joueurs</h2>
+        
+        
+                    <table style="width: 90%; border: solid;" >
+                        <tr>
+                            <th>Nom</th><th>Wins</th><th>Losses</th><th>Scores</th><th>Action</th>
+                        </tr>
+                    <% for(i=0; i<resultat.length; i++) { %>
+        
+                        
+                            <tr>
+                                <td><%= resultat[i].nom %></td>
+                        <td><%= resultat[i].wins %></td>
+                        <td><%= resultat[i].losses %></td>
+                        <td><%= resultat[i].scores %></td>
+                        <td>
+                                    <input type="button" class="red" value="Supprimer" onclick="supprimer('<%= resultat[i].id %>')">
+                                    <input type="button" class="green" value="Modifier" onclick="remplirDonnees('<%= resultat[i].id %>','<%= resultat[i].nom %>', '<%= resultat[i].wins %>', '<%= resultat[i].losses %>', '<%= resultat[i].scores %>' )">
+                        </td>
+                            </tr>
+                    <% } %>
+        
+                        </table>
+        
+                        
+        
+           
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function remplirDonnees(id, nom, wins,losses,scores) {
+        document.getElementById('id').value = id;
+        document.getElementById('nom').value = nom;
+        document.getElementById('wins').value = wins;
+        document.getElementById('losses').value = losses;
+        document.getElementById('scores').value = scores;
+
+    }
+
+    function supprimer(id) {
+
+        let pointFinal = "joueurs/" + id
+        fetch(
+            pointFinal, {method : "DELETE"}
+        ).then(
+            (reponse)=> reponse.json()
+        ).then(
+            (donnee)=> window.location.href = donnee.routeRacine
+        ).catch((erreur)=> console.log(erreur))
+        
+    }
+</script>
+
+</html>
