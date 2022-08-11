@@ -22,6 +22,7 @@ La solution conçue devra répondre aux exigences liés à la collecte (l'affich
 
 # Comment utiliser :
 Le frontend peut être visualisé sur https://evening-island-54701.herokuapp.com/ et permet de:
+
 • Afficher les statistiques d'un joueur une fois que ses données sont enregistrées dans la base de données,
 • Insérer des statistiques pour un nouveau joueur,
 • Mettre à jour (modifier) les statistiques d'un joueur,
