@@ -11,14 +11,7 @@ La solution conçue devra répondre aux exigences liés à la collecte (l'affich
 # Outils et framework utilisés:
 •	NodeJS
 •	Engine View (ejs)
-•	Views
 •	Express.js 
-
-# Les packs et logiciels installés :
-•	nvm – Node Version Manager
-•	npm – Node Package Manager
-•	Node.js
-•	Express installed with npm.
 
 # Comment utiliser :
 Le frontend peut être visualisé sur https://evening-island-54701.herokuapp.com/ et permet de:
